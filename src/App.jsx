@@ -4,10 +4,20 @@ import DesignatedDriver from './Pages/DesignatedDriver'
 import DrivingSchool from './Pages/DrivingSchool'
 import About from './Pages/About'
 import ContactUS from './Pages/ContactUS'
+import FAQs from './Pages/FAQs'
+import { Route, Routes } from 'react-router'
+import { Fa0 } from 'react-icons/fa6'
 const App = () => {
     return (
         <div>
-            <DrivingSchool />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/Designated Driver' element={<DesignatedDriver />} />
+                <Route path='/Driving School' element={<DrivingSchool />} />
+                 <Route path='/FAQs' element={<FAQs />} />
+                <Route path='/About' element={<About />} />
+                <Route path='/ContactUS' element={<ContactUS />} />
+            </Routes>
         </div>
     )
 }

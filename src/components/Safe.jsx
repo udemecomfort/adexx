@@ -1,11 +1,12 @@
 import React from 'react'
 import orange from "../assets/orange-bg.png"
 import car from "../assets/Car-Adex.png"
+import white from "../assets/ADEX LOGO WHITE.png"
 
 
 const Safe = () => {
     return (
-        <div className="relative h-[50vh] md:h-[100vh] bg-[#fa1d04]">
+        <div className="relative h-[50vh] md:h-[80vh] bg-[#fa1d04]">
             <div
                 className="absolute inset-0 bg-center bg-cover"
                 style={{ backgroundImage: `url(${orange})` }}
@@ -14,9 +15,10 @@ const Safe = () => {
             <div className="flex">
                 <div>
                     
-                <h1 className="text-3xl md:text-[50px] font-bold text-black px-18 pt-10 md:pt-20">
+                <h1 className="text-[80px] md:text-[50px] font-bold text-black px-18 pt-10 md:pt-20">
                     Easy safe Ride. <br /><span className="text-white">Upgrade your driving <br /> skills.</span>
                 </h1>
+                <img src={white} alt="" className='px-18 w-[400px]' />
                 </div>
 
                 

@@ -4,7 +4,7 @@ import manHero from "../assets/Man-hero.png";
 
 const Hero = () => {
   return (
-    <section className="relative md:h-[90vh] mt-[90px]">
+    <section className="relative md:h-[90vh] h-[60vh] md:mt-[90px] overflow-hidden">
       <div className="relative">
         <img src={fill} alt="Background decorative" className="w-full h-auto" />
         <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-between  md:pl-20 top-0">
@@ -20,7 +20,7 @@ const Hero = () => {
             <img
               src={manHero}
               alt="Man standing by driving solutions"
-              className=" w-full h-full object-cover"
+              className=" md:w-full md:h-full object-cover w-[500px] h-[400px]"
             />
             <div className="absolute top-0 w-[40px] h-[190px] shadow-md bg-black px-4 flex flex-col items-center justify-center text-center" style={{ transform: "skewX(-19deg)" }}>
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { LuPhoneCall } from "react-icons/lu";
 import { HiMenuAlt3 } from "react-icons/hi";
+import { Link } from "react-router";
 
 import Logo from "../assets/ADEX LOGO.png";
 import logomob from "../assets/ADEX LOGO WHITE.png";
@@ -19,10 +20,10 @@ const Navbar = () => {
         <div className="flex items-center gap-27">
           <img src={Logo} alt="Logo" className="w-[100px]" />
           <ul className="flex gap-8 text-gray-800 font-semibold">
-            <li className="cursor-pointer hover:text-red-600 transition">Home</li>
-            <li className="cursor-pointer hover:text-red-600 transition">Designated Driver</li>
-            <li className="cursor-pointer hover:text-red-600 transition">Driving School</li>
-            <li className="cursor-pointer hover:text-red-600 transition">FAQs</li>
+            <li className="cursor-pointer hover:text-red-600 transition"><Link to="/">Home</Link> </li>
+            <li className="cursor-pointer hover:text-red-600 transition"> <Link to="/Designated Driver">Designated Driver</Link></li>
+            <li className="cursor-pointer hover:text-red-600 transition"><Link to="/Driving School">Driving School</Link></li>
+            <li className="cursor-pointer hover:text-red-600 transition"><Link to="/FAQs">FAQs</Link></li>
           </ul>
         </div>
         <div
