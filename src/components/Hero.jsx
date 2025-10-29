@@ -27,13 +27,13 @@ const Hero = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="text-[20px] md:text-[60px] font-bold text-black leading-tight">
+          <h1 className=" text-[60px] font-bold text-black leading-tight">
             Your Partner in Driving Solutions.
           </h1>
 
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link to="/contact">
-              <button className="bg-[#fa1d04] text-[14px] md:text-[18px] text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-[#fa1d04] transition">
+              <button className="bg-[#fa1d04] md:text-[18px] text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-[#fa1d04] transition">
                 Request a Booking
               </button>
             </Link>
@@ -42,7 +42,8 @@ const Hero = () => {
 
         {/* Parallelogram Image Section */}
         <motion.div
-          className="parallelogram relative w-full w-[850px] md:w-[850px] h-[60vh] md:h-[90vh] overflow-hidden flex justify-center items-center"
+          className="parallelogram relative flex justify-center items-center w-full md:w-[850px] h-[60vh] md:h-[90vh] overflow-hidden hidden md:flex"
+
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
