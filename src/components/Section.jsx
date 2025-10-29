@@ -1,5 +1,5 @@
 import React from "react";
-import SectionProps from "../Components/SectionProps";
+import SectionProps from "../components/SectionProps";
 import men from "../assets/Rectangle 6.png";
 import car from "../assets/Rectangle 15.png";
 
