@@ -5,7 +5,7 @@ import car from "../assets/Rectangle 15.png";
 
 const Section = () => {
   const text1 = [
-    "Party, Pub, Wine tasting Pick up and Drop-off",
+    "Party, Pub, Wine Tasting Pick up and Drop-off",
     " Driver for Hire Service",
     "Vehicle Relocation within and out of Province",
     "Vehicle Transport to and from Dealership and ",
