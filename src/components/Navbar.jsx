@@ -59,7 +59,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div
-          className="w-[340px] h-[90px] shadow-md bg-black px-4 flex flex-col items-center justify-center text-center"
+          className="hidden md:block w-[340px] h-[90px] shadow-md bg-black px-4 flex flex-col items-center justify-center text-center"
           style={{ transform: "skewX(-25deg)" }}
         >
           <p className="text-white text-[19px] mb-1 flex justify-center">
