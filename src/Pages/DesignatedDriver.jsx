@@ -7,6 +7,7 @@ import Testimonials from '../components/Testimonials'
 import Contact from '../components/Contact'
 import HeroDD from '../components/HeroDD'
 import CorporateEvent from '../components/CorporateEvent'
+import DownContact from '../components/DownContact'
 
 const DesignatedDriver = () => {
     return (
@@ -18,6 +19,7 @@ const DesignatedDriver = () => {
             <PricingPolicy />
             <Testimonials />
             <Contact />
+            <DownContact />
             <Footer />
         </div>
     )

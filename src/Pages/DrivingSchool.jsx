@@ -13,15 +13,15 @@ import LicenseSection from '../components/LicenseSection'
 const DrivingSchool = () => {
   return (
     <div>
-        <Navbar/>
-        <HomeDS/>
-        <InfoDS/>
-        <LicenseSection/>
-        <WhyChooseAdex/>
-        <MapDS/>
-      <Pricing/>
-      <Contact/>
-      <Footer/>
+      <Navbar />
+      <HomeDS />
+      <InfoDS />
+      <LicenseSection />
+      <WhyChooseAdex />
+      <MapDS />
+      <Pricing />
+      <Contact />
+      <Footer />
     </div>
   )
 }

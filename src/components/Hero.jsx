@@ -4,28 +4,38 @@ import manHero from "../assets/Man-hero.png";
 
 const Hero = () => {
   return (
-    <section className="relative md:h-[90vh] h-[60vh] md:mt-[90px] overflow-hidden">
-      <div className="relative">
-        <img src={fill} alt="Background decorative" className="w-full h-auto" />
-        <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center md:justify-between  md:pl-20 top-0">
-          <div className="max-w-[700px] text-center md:text-left space-y-10">
-            <h1 className="text-[30px] md:text-[70px] font-bold text-black mb-4">
-              Your Partner in Driving Solutions.
-            </h1>
-            <button className="bg-[#fa1d04] text-[20px] text-white mt-20 px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-[#fa1d04] transition">
-              Request a Booking
-            </button>
-          </div>
-          <div className="parallelogram w-[750px] h-full overflow-hidden relative" >
-            <img
-              src={manHero}
-              alt="Man standing by driving solutions"
-              className=" md:w-full md:h-full object-cover w-[500px] h-[400px]"
-            />
-            <div className="absolute top-0 w-[40px] h-[190px] shadow-md bg-black px-4 flex flex-col items-center justify-center text-center" style={{ transform: "skewX(-19deg)" }}>
+    <section className="relative overflow-hidden mt-[5px] md:mt-[90px]">
+      {/* Background fill */}
+      <img
+        src={fill}
+        alt="Background decorative"
+        className="w-full h-auto md:h-[90vh]"
+      />
 
-            </div>
-          </div>
+      {/* Content container */}
+      <div className="absolute inset-0 flex flex-col-reverse md:flex-row items-center justify-center md:justify-between px-6 md:pl-20 gap-10">
+        
+        {/* Text Section */}
+        <div className="max-w-[700px] text-center md:text-left space-y-8">
+          <h1 className="text-[28px] sm:text-[36px] md:text-[60px] lg:text-[70px] font-bold text-black leading-tight">
+            Your Partner in Driving Solutions.
+          </h1>
+          <button className="bg-[#fa1d04] text-[18px] sm:text-[20px] text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-[#fa1d04] transition">
+            Request a Booking
+          </button>
+        </div>
+
+        {/* Parallelogram Image Section */}
+        <div className="parallelogram relative w-full w-[350px] md:w-[850px] h-[300px] sm:h-[400px] md:h-[90vh] overflow-hidden flex justify-center items-center">
+          <img
+            src={manHero}
+            alt="Man standing by driving solutions"
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute top-0 right-0 w-[30px] sm:w-[40px] h-[120px] sm:h-[160px] md:h-[190px] bg-black"
+            style={{ transform: "skewX(-30deg)" }}
+          ></div>
         </div>
       </div>
     </section>

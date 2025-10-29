@@ -1,15 +1,21 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+
 
 
 const Contact = () => {
+  const location = useLocation();
   return (
     <div className="bg-white py-16 px-6 md:px-20">
       {/* Header */}
       <div className="text-center mb-10">
-        <h3 className="text-3xl font-semibold mb-2">
-          <span className="text-black">»»» </span>Contact Us
-          <span className="text-gray-700"> «««</span>
-        </h3>
+        {location.pathname !== "/contact" && (
+          <h3 className="text-3xl font-semibold mb-2">
+            <span className="text-black">»»» </span>Contact Us
+            <span className="text-gray-700"> «««</span>
+          </h3>
+        )}
+
         <p className="text-[17px] text-black max-w-lg mx-auto">
           Fill out this form to request a callback. Our team will be in touch to
           confirm the details and arrange payment to secure your booking.
@@ -116,7 +122,7 @@ const Contact = () => {
       </form>
 
       {/* Bottom Red Section */}
-      
+
     </div>
   );
 };
