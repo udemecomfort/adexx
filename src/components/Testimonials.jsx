@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import TestimonialsProps from "./TestimonialsProps";
 
 const Testimonials = () => {
@@ -35,10 +36,40 @@ const Testimonials = () => {
     },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 70, damping: 15 },
+    },
+  };
+
   return (
-    <div className="bg-gray-100 py-16 px-4">
+    <motion.div
+      className="bg-gray-100 py-16 px-4"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={containerVariants}
+    >
       {/* Heading Section */}
-      <div className="flex flex-col items-center text-center gap-2 mb-12">
+      <motion.div
+        className="flex flex-col items-center text-center gap-2 mb-12"
+        variants={itemVariants}
+      >
         <h5 className="text-lg font-medium bg-gray-300 text-black py-1 px-5 rounded-xl">
           Testimonies
         </h5>
@@ -46,25 +77,40 @@ const Testimonials = () => {
           What are people saying about{" "}
           <span className="text-[#FA1D04]">Adex?</span>
         </h1>
-      </div>
+      </motion.div>
 
-      {/* Testimonials Layout (Staggered) */}
-      <div className="max-w-6xl mx-auto flex flex-col gap-10">
+      {/* Testimonials Layout */}
+      <motion.div
+        className="max-w-6xl mx-auto flex flex-col gap-10"
+        variants={containerVariants}
+      >
         {/* Row 1 */}
         <div className="flex flex-wrap justify-center gap-6">
-          <div><TestimonialsProps {...data[0]} /></div>
-          <div className="md:-mt-8"><TestimonialsProps {...data[1]} /></div> {/* middle box slightly up */}
-          <div><TestimonialsProps {...data[2]} /></div>
+          {data.slice(0, 3).map((item, index) => (
+            <motion.div
+              key={index}
+              className={index === 1 ? "md:-mt-8" : ""}
+              variants={itemVariants}
+            >
+              <TestimonialsProps {...item} />
+            </motion.div>
+          ))}
         </div>
 
         {/* Row 2 */}
         <div className="flex flex-wrap justify-center gap-6">
-          <div><TestimonialsProps {...data[3]} /></div>
-          <div className="md:mt-8"><TestimonialsProps {...data[4]} /></div> {/* middle box slightly down */}
-          <div><TestimonialsProps {...data[5]} /></div>
+          {data.slice(3).map((item, index) => (
+            <motion.div
+              key={index + 3}
+              className={index === 1 ? "md:mt-8" : ""}
+              variants={itemVariants}
+            >
+              <TestimonialsProps {...item} />
+            </motion.div>
+          ))}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
