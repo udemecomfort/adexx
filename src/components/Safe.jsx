@@ -17,7 +17,7 @@ const Safe = () => {
         transition={{ duration: 1.2 }}
       />
 
-      <div className="relative flex flex-col md:flex-row items-start justify-between px-6 md:px-16 py-10 md:py-20 gap-10">
+      <div className="relative flex flex-col md:flex-row items-start justify-between px-6 pr-0 md:pl-16 py-10 md:py-20 gap-10">
         
         <motion.div
           className="z-10 text-left w-full md:w-1/2"
@@ -52,7 +52,7 @@ const Safe = () => {
           />
         </motion.div>
 
-        {/* 🚗 Right Car Image with smooth float effect */}
+        
         <motion.div
           className="z-10 relative flex justify-end w-full md:w-1/2"
           initial={{ x: 100, opacity: 0 }}

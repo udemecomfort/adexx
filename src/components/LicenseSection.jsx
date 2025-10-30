@@ -1,47 +1,98 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const LicenseSection = () => {
-  return (
-    <div className="py-16 px-6 md:px-12 text-center mt-[395px] md:mt-[465px]">
-      <h2 className="text-3xl md:text-3xl font-bold mb-10">
-        Your License, Your Freedom—<br className="md:hidden" />
-        Let’s Make <br className="hidden md:block" />it Happen!
-      </h2>
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.2,
+        ease: "easeOut",
+      },
+    },
+  };
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center">
-        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-          <h3 className="text-lg font-semibold mb-3">Prepare for Road Tests</h3>
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  return (
+    <motion.div
+      className="py-12 px-5 sm:px-8 md:px-16 text-center mt-[380px] md:mt-[450px]"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      {/* Heading */}
+      <motion.h2
+        className="text-2xl sm:text-3xl md:text-4xl font-bold mb-10 leading-snug"
+        variants={cardVariants}
+      >
+        Your License, Your Freedom—
+        <br className="md:hidden" />
+        Let’s Make <br className="hidden md:block" /> it Happen!
+      </motion.h2>
+
+      {/* Card Grid */}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center"
+        variants={containerVariants}
+      >
+        {/* Card 1 */}
+        <motion.div
+          className="border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] bg-white transition-all duration-300"
+          variants={cardVariants}
+        >
+          <h3 className="text-lg font-semibold mb-3 text-[#fa1d04]">Prepare for Road Tests</h3>
           <ul className="list-disc list-inside text-left text-gray-700 text-[15px]">
             <li>Class 7 (“N” license)</li>
             <li>Class 5 (full license)</li>
           </ul>
-        </div>
-        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-          <h3 className="text-lg font-semibold mb-3">Language</h3>
+        </motion.div>
+
+        {/* Card 2 */}
+        <motion.div
+          className="border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] bg-white transition-all duration-300"
+          variants={cardVariants}
+        >
+          <h3 className="text-lg font-semibold mb-3 text-[#fa1d04]">Language</h3>
           <ul className="list-disc list-inside text-left text-gray-700 text-[15px]">
             <li>English</li>
           </ul>
-        </div> 
-        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-          <h3 className="text-lg font-semibold mb-3">Lesson Hours</h3>
+        </motion.div>
+
+        {/* Card 3 */}
+        <motion.div
+          className="border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] bg-white transition-all duration-300"
+          variants={cardVariants}
+        >
+          <h3 className="text-lg font-semibold mb-3 text-[#fa1d04]">Lesson Hours</h3>
           <ul className="list-disc list-inside text-left text-gray-700 text-[15px]">
             <li>Available 7 AM – 7 PM, any day of the week</li>
           </ul>
-        </div>
+        </motion.div>
 
         {/* Card 4 */}
-        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-          <h3 className="text-lg font-semibold mb-3">Friendly Instructors</h3>
+        <motion.div
+          className="border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.03] bg-white transition-all duration-300"
+          variants={cardVariants}
+        >
+          <h3 className="text-lg font-semibold mb-3 text-[#fa1d04]">Friendly Instructors</h3>
           <ul className="list-disc list-inside text-left text-gray-700 text-[15px] leading-relaxed">
             <li>
               Learn from a diverse team of experienced, patient, and approachable
-              instructors who are committed to making learning accessible and supporting
-              your success every step of the way.
+              instructors who make learning easy and fun.
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
