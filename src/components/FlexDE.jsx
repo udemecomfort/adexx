@@ -1,6 +1,6 @@
 import React from "react";
 import { ImCheckmark } from "react-icons/im";
-import { motion } from "framer-motion"; // 👈 Import Framer Motion
+import { motion } from "framer-motion";
 import Image1 from "../assets/FlexImage1.png";
 import Image2 from "../assets/FlexImage2.png";
 import Image3 from "../assets/FlexImge3.png";
@@ -31,29 +31,29 @@ const FlexDE = () => {
   ];
 
   return (
-    <div>
-      {/* Section Intro */}
+    <div className="bg-white">
+      {/* ===== Section Intro ===== */}
       <motion.div
-        className="px-4 md:px-10 lg:px-20"
+        className="px-4 sm:px-6 lg:px-20 mt-16 md:mt-24"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="text-center bg-gray-100 mx-auto text-[18px] md:text-[20px] lg:text-[23px] mt-[60px] md:mt-[120px] mb-[30px] font-semibold rounded-2xl py-6 md:py-10 max-w-[900px]">
-          <p className="max-w-[640px] mx-auto pb-6 md:pb-9 px-4 leading-relaxed">
+        <div className="text-center bg-gray-100 mx-auto text-base sm:text-lg md:text-xl font-semibold rounded-2xl py-8 sm:py-10 max-w-[900px]">
+          <p className="max-w-[640px] mx-auto pb-4 sm:pb-6 px-4 leading-relaxed">
             Planning a night out? Don’t let a DUI ruin your evening — choose our
             designated driver service for a safe, stress-free ride home.
           </p>
 
-          <p className="max-w-[640px] mx-auto pb-6 md:pb-2 px-4 leading-relaxed">
+          <p className="max-w-[640px] mx-auto pb-4 sm:pb-6 px-4 leading-relaxed">
             With reliable, professional drivers available 24/7, you can enjoy
             your night without the risk or worry of getting behind the wheel.
-            We’ll get both you and your vehicle home surely.
+            We’ll get both you and your vehicle home safely.
           </p>
 
           <motion.div
-            className="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-4 md:space-y-0 mt-4"
+            className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-8 mt-4 flex-wrap"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -68,17 +68,17 @@ const FlexDE = () => {
                 transition={{ delay: index * 0.3, duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <ImCheckmark className="text-[#fa1d04] text-[20px] md:text-[22px]" />
-                <span className="text-[20px] md:text-[24px]">{text}</span>
+                <ImCheckmark className="text-[#fa1d04] text-lg sm:text-xl" />
+                <span className="text-lg sm:text-xl font-medium">{text}</span>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Cards Section */}
+      {/* ===== Cards Section ===== */}
       <motion.div
-        className="space-y-12 px-6 md:px-10 lg:px-20 py-10 md:flex items-center justify-between md:space-y-0 md:space-x-6"
+        className="px-4 sm:px-6 lg:px-20 py-10 flex flex-col lg:flex-row items-center justify-center gap-10"
         initial="hidden"
         whileInView="visible"
         variants={{
@@ -90,7 +90,7 @@ const FlexDE = () => {
         }}
         viewport={{ once: true }}
       >
-        {[ 
+        {[
           {
             items: firstServices,
             image: Image1,
@@ -109,15 +109,16 @@ const FlexDE = () => {
             image: Image3,
             title: "Vehicle Relocation",
             heading:
-              "We’ll move your vehicle from one location to another without you needing to be present, saving you time and hassle.",
+              "We’ll move your vehicle from one location to another without you needing to be present — saving you time and hassle.",
           },
         ].map((card, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.4 }}
+            transition={{ duration: 0.7, delay: index * 0.3 }}
             viewport={{ once: true }}
+            className="w-full sm:max-w-[360px]"
           >
             <FlexDEProps {...card} />
           </motion.div>
