@@ -6,7 +6,8 @@ const packages = [
   {
     title: "Basic Package",
     hours: "1.5 Hours",
-    circleContent: <FaCar className="text-[#FA1D04] text-2xl sm:text-3xl" />,
+    circleContent: "$100" ,
+    heading: "Ideal for: Drivers needing a quick skill check, confidence boost, or instructor evaluation. Can be upgraded to a full package. Includes:",
     desc: [
       "1.5 hours of in-car instruction",
       "Pickup and drop-off within service area",
@@ -17,7 +18,8 @@ const packages = [
   {
     title: "Test-Ready Package",
     hours: "4.5 Hours",
-    circleContent: <FaClock className="text-[#FA1D04] text-2xl sm:text-3xl" />,
+    circleContent: "$270",
+    heading: "Ideal for: Students preparing for their ICBC road test.A final polish before the big day.Includes:",
     desc: [
       "3 focused, intensive in-car lessons",
       "Pickup and drop-off within service area",
@@ -31,18 +33,18 @@ const packages = [
   {
     title: "Road Test Car Rental",
     hours: "",
-    circleContent: <FaRoad className="text-[#FA1D04] text-2xl sm:text-3xl" />,
+    circleContent: <FaCar className="text-[#FA1D04] text-2xl sm:text-3xl" />,
+    heading: "All vehicles are ICBC-approved and meet test-day standards.Pickup and drop-off at the ICBC testing center included if requested.",
     desc: [
       "Car Rental Only $100",
       "Car Rental + 1-Hour Warm-Up Lesson $200",
-      "All vehicles are ICBC-approved and meet test-day standards",
-      "Pickup and drop-off at the ICBC testing center included if requested",
     ],
   },
   {
     title: "Brush-Up Package",
     hours: "10.5 Hours",
-    circleContent: <FaStar className="text-[#FA1D04] text-2xl sm:text-3xl" />,
+    circleContent: "$630" ,
+    heading: "Ideal for: Drivers with prior experience or returning after a long break. Perfect for Canadian road rule updates, or skill-focused refreshers.Includes:",
     desc: [
       "10.5 hours of in-car instruction",
       "Pickup and drop-off within service area",
@@ -58,7 +60,8 @@ const packages = [
   {
     title: "Start Smart Package",
     hours: "15 Hours",
-    circleContent: <FaCheck className="text-[#FA1D04] text-2xl sm:text-3xl" />,
+    circleContent: "$810",
+    heading: "Ideal for: Beginners with no prior driving experience or access to a practice vehicle.Designed to build confidence and road awareness from day one.Includes:",
     desc: [
       "15 hours of in-car instruction",
       "Pickup and drop-off within service area",
@@ -80,7 +83,7 @@ const PackageCard = ({ pkg }) => (
       <img src={img} alt="" className="w-full h-auto" />
 
       {/* Circle on top */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+      <div className="absolute top-0 left-1/2 text-[#FA1D04] text-2xl sm:text-xl font-semibold transform -translate-x-1/2 -translate-y-1/2
                       h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 rounded-full bg-white flex items-center justify-center z-10">
         {pkg.circleContent}
       </div>
@@ -95,7 +98,7 @@ const PackageCard = ({ pkg }) => (
     {/* Description */}
     <div className="flex flex-col gap-4 sm:gap-6 mt-6 px-2 sm:px-10">
       <h1 className="text-[16px] sm:text-[20px] font-medium">
-        Ideal for: {pkg.title} includes:
+        {pkg.heading}
       </h1>
       <ul className="list-disc pl-5 space-y-1 sm:space-y-2 text-[16px] sm:text-[20px]">
         {pkg.desc.map((item, idx) => <li key={idx}>{item}</li>)}
