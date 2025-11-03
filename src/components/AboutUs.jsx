@@ -4,7 +4,7 @@ import orange from "../assets/orange-bg.png";
 const AboutUs = () => {
   return (
     <section className="relative">
-      <div className="relative bg-[#FA1D04] h-[45vh] sm:h-[55vh] md:h-[33vh] flex items-center justify-center overflow-hidden">
+      <div className="relative bg-[#FA1D04] my-auto h-[45vh] sm:h-[55vh] md:h-[33vh] flex items-center justify-center overflow-hidden">
         {/* Orange Rays Background */}
         <img
           src={orange}
@@ -16,7 +16,7 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-black/20"></div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 md:px-10 flex flex-col items-center justify-center mt-12 sm:mt-16 md:mt-20">
+        <div className="relative z-10 text-center mx-auto px-4 sm:px-6 md:px-10 flex flex-col items-center justify-center mt-12 sm:mt-16 md:mt-20">
           <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 leading-tight">
             About <span className="text-black">Us</span>
           </h2>

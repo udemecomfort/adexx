@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 const TestimonialsProps = ({ rating, text, name }) => {
     return (
-        <div className=" border border-gray-400 rounded-2xl p-6 w-[360px] text-left transition duration-300">
+        <div className=" border border-gray-400 rounded-2xl p-6 w-[270px] md:[360px] text-left transition duration-300">
             {/* Rating */}
             <div className="flex items-center gap-2 mb-3">
                 <p className="text-[15px] font-semibold">{rating}.0</p>

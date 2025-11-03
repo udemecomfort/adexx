@@ -51,14 +51,14 @@ const Faq = () => {
         </motion.p>
 
         <motion.h2
-          className="text-3xl font-bold mb-4"
+          className="md:text-3xl text-2xl font-bold mb-4"
           variants={containerVariants}
         >
-          Still Curious about <span className="text-[#fa1d04]">Adex</span>? <br /> Let's Unpack the Core
+          Still Curious about <span className="text-[#fa1d04]">Adex?</span> <br /> Let's Unpack the Core
         </motion.h2>
 
         <motion.p
-          className="text-[18px] md:text-[20px] font-[400] text-gray-700 leading-relaxed max-w-[900px] mx-auto"
+          className="text-[15px] md:px-0 px-5 md:text-[20px] font-[400] text-gray-700 leading-relaxed max-w-[900px] mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}

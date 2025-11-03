@@ -6,7 +6,7 @@ import secondellipse from "../assets/ellipseinfo2.png"
 
 const InfoDS = () => {
     return (
-        <div className="flex flex-row flex-wrap justify-center md:justify-around items-start px-4 sm:px-6 md:px-20 py-6 gap-12 w-full text-center md:text-left">
+        <div className="flex flex-row flex-wrap justify-center md:justify-around items-start px-4 sm:px-6 md:px-20 py-6 gap-12 w-full md:text-left">
 
             {/* Right Card */}
             <div className="w-full md:w-auto flex justify-center mb-[600px] md:mb-[700px] lg:mb-0">
@@ -23,9 +23,9 @@ const InfoDS = () => {
 
 
                         <div className="relative">
-                            <img src={secondellipse} alt="" className='absolute -top-14 sm:-top-12 left-6 w-20 md:w-24' />
+                            <img src={secondellipse} alt="" className='absolute -top-17 sm:-top-19 left-6 w-20 md:w-24' />
                             <h1 className='text-2xl font-semibold mb-2 mt-4'>Expert Guidance</h1>
-                            <p className='mb-4 text-sm sm:text-base'>
+                            <p className='mb-4 text-sm '>
                                 Benefit from proven teaching techniques tailored to your needs,
                                 whether you’re a beginner or brushing up on your skills for the
                                 next road test..
@@ -33,7 +33,7 @@ const InfoDS = () => {
                         </div>
                         <div>
                             <h1 className='text-2xl font-semibold mb-2'>Prepare for Road Tests</h1>
-                            <p className='mb-4 text-sm sm:text-base'>
+                            <p className='mb-4 text-sm'>
                                 Master the skills needed to excel in ICBC’s Class 7 (“N” license)
                                 and Class 5 (full license) road tests. Our lessons are structured
                                 to build confidence and ensure you’re test-ready.

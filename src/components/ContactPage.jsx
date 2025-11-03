@@ -6,7 +6,7 @@ const ContactPage = () => {
   return (
     <section className="relative">
       {/* Background section */}
-      <div className="relative bg-[#FA1D04] h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden">
+      <div className="relative bg-[#FA1D04] h-[35vh] my-auto sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden">
         {/* Background image */}
         <img
           src={orange}

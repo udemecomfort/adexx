@@ -103,7 +103,7 @@ const WhyChooseAdex = () => {
       </motion.div>
 
   
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-0 gap-y-12 mt-10 justify-items-center text-left">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-0 gap-y-0 mt-0 justify-items-center text-left">
   {cards.map((item, index) => (
     <motion.div
       key={index}
@@ -123,14 +123,14 @@ const WhyChooseAdex = () => {
 
       {/* BOTTOM IMAGES */}
       <motion.div
-        className="flex justify-center gap-8 mt-10 flex-wrap"
+        className="flex justify-center gap-8 mt-5 flex-wrap"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <img src={img1} alt="L sign" className="object-contain" />
-        <img src={img2} alt="Green N sign" className="object-contain" />
+        <img src={img1} alt="L sign" className="object-contain w-[200px] md:w-[250px]" />
+        <img src={img2} alt="Green N sign" className="object-contain w-[200px] md:w-[250px]" />
       </motion.div>
     </section>
   );

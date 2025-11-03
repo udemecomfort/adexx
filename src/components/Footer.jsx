@@ -10,12 +10,12 @@ import { GoArrowUpRight } from "react-icons/go";
 const Footer = () => {
   return (
     <div className="bg-black text-white py-8 sm:py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-5">
 
         {/* Logo + Social icons */}
         <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-8">
-          <div className="max-w-xl text-center md:text-left">
-            <img src={ADEX} alt="ADEX Logo" className="h-10 mx-auto md:mx-0" />
+          <div className="max-w-xl  md:text-left">
+            <img src={ADEX} alt="ADEX Logo" className="h-10  md:mx-0" />
             <p className="text-sm sm:text-base mt-3 text-gray-400">
               ADEX is your trusted local provider serving Vancouver, BC and the
               Lower Mainland for professional driving instruction and reliable
@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
           {/* Social Media Icons */}
-          <div className="flex justify-center md:justify-end items-center gap-5 text-2xl">
+          <div className="flex justify-center md:justify-end  gap-5 text-2xl">
             <a
               href="https://www.facebook.com/profile.php?id=61573474127882&mibextid=ZbWKwL"
               target="_blank"
@@ -57,7 +57,7 @@ const Footer = () => {
 
         {/* Routes + Contact Info */}
         <div className="flex flex-col md:flex-row justify-between gap-8 mb-6">
-          <div className="text-center md:text-left">
+          <div className=" md:text-left">
             <ul className="space-y-2">
               {[
                 { name: "Home", to: "/" },
@@ -79,7 +79,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="text-center md:text-right space-y-2">
-            <div className="flex justify-center md:justify-end items-center gap-2 text-base sm:text-lg text-gray-400">
+            <div className="flex md:justify-end gap-2 text-base sm:text-lg text-gray-400">
               <SiGmail className="text-[#fa1d04]" />
               <a
                 href="mailto:adexlogisticsltd@gmail.com"
@@ -88,7 +88,7 @@ const Footer = () => {
                 adexlogisticsltd@gmail.com
               </a>
             </div>
-            <div className="flex justify-center md:justify-end items-center gap-2 text-base sm:text-lg text-gray-400">
+            <div className="flex md:justify-end gap-2 text-base sm:text-lg text-gray-400">
               <SiWhatsapp className="text-[#fa1d04]" />
               <a
                 href="https://wa.me/1604671705"
@@ -99,7 +99,7 @@ const Footer = () => {
                 +1 (604) 671-705
               </a>
             </div>
-            <div className="flex justify-center md:justify-end items-center gap-2 text-base sm:text-lg text-gray-400">
+            <div className="flex md:justify-end  gap-2 text-base sm:text-lg text-gray-400">
               <LuPhoneCall className="text-[#fa1d04]" />
               <a href="tel:+1604671705" className="hover:text-white transition">
                 +1 (604) 671-705
@@ -109,7 +109,7 @@ const Footer = () => {
         </div>
 
         {/* Contact Us Button */}
-        <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row md:justify-start gap-3 mb-6">
           <Link
             to="/contact"
             className="flex items-center cursor-pointer hover:text-[#fa1d04] transition-colors"

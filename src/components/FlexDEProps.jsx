@@ -3,7 +3,7 @@ import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 const FlexDEProps = ({ items = [], image, title, heading }) => {
   return (
-    <div className="relative bg-gray-100 w-full md:w-[340px] h-[75vh] text-[13px] font-semibold rounded-[40px] overflow-hidden shadow-md px-5 py-6 pt-16 flex flex-col justify-between">
+    <div className="relative bg-gray-100 w-full md:w-[340px] md:h-[70vh] h-100vh text-[13px] font-semibold rounded-[40px] overflow-hidden shadow-md px-5 py-6 pt-16 flex flex-col justify-between">
       {/* Title */}
       <h2 className="text-[18px] absolute top-0 left-0 bg-[#fa1d04] text-white inline-block rounded-tl-[40px] rounded-br-[50px] py-3 px-4">
         {title}

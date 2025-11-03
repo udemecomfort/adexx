@@ -5,7 +5,7 @@ import img from "../assets/d image.png";
 
 const HeroDD = () => {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden pt-0 md:pt-20">
       {/* ===== Top Hero Image ===== */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -16,7 +16,7 @@ const HeroDD = () => {
         <img
           src={img}
           alt="Designated Driver Service"
-          className="w-full h-[45vh] sm:h-[60vh] md:h-[80vh] object-cover"
+          className="w-full h-[45vh] sm:h-[60vh] md:h-[80vh] mt-20 md:mt-0 object-cover"
         />
       </motion.div>
 

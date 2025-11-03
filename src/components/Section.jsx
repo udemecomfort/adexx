@@ -6,10 +6,9 @@ import car from "../assets/Rectangle 15.png";
 const Section = () => {
   const text1 = [
     "Party, Pub, Wine Tasting Pick up and Drop-off",
-    " Driver for Hire Service",
+    "Driver for Hire Service",
     "Vehicle Relocation within and out of Province",
-    "Vehicle Transport to and from Dealership and ",
-    " auto Repair Shops",
+    "Vehicle Transport to and from Dealership and Auto Repair Shops",
   ];
 
   const text2 = [
@@ -22,6 +21,7 @@ const Section = () => {
 
   return (
     <div>
+      {/* Designated Driver Section */}
       <SectionProps
         image={men}
         overlayText="DESIGNATED DRIVER"
@@ -31,6 +31,7 @@ const Section = () => {
         secondaryButtonText="View More"
       />
 
+      {/* Driving School Section */}
       <SectionProps
         image={car}
         overlayText="DRIVING SCHOOL"
