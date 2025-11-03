@@ -2,6 +2,7 @@ import React from "react";
 import { FaCheck } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import eventImg from "../assets/event.png";
+import { Link } from "react-router-dom";
 
 const CorporateEvent = () => {
   return (
@@ -63,14 +64,16 @@ const CorporateEvent = () => {
           <br />
           Book now or contact us to learn more about our corporate packages.
         </p>
-
-        <motion.button
+          <Link to="/contact">
+             <motion.button
           className="bg-[#FA1D04] text-white text-[15px] sm:text-[16px] font-semibold py-2.5 sm:py-3 px-5 sm:px-6 rounded-md shadow-md hover:bg-[#d81703] transition-all duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           Request a Booking
         </motion.button>
+          </Link>
+       
       </motion.div>
 
       {/* Right Image Section */}

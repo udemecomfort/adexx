@@ -23,7 +23,7 @@ const InfoDS = () => {
 
 
                         <div className="relative">
-                            <img src={secondellipse} alt="" className='absolute -top-17 sm:-top-19 left-6 w-20 md:w-24' />
+                            <img src={secondellipse} alt="" className='absolute -top-17 sm:-top-21 left-6 w-20 md:w-24' />
                             <h1 className='text-2xl font-semibold mb-2 mt-4'>Expert Guidance</h1>
                             <p className='mb-4 text-sm '>
                                 Benefit from proven teaching techniques tailored to your needs,
@@ -59,7 +59,7 @@ const InfoDS = () => {
                     <div className="absolute bg-[#FA1D04] text-white py-6 px-4 w-full max-w-[500px] top-[calc(100%-1%)] sm:top-[calc(100%-160px)] lg:top-[calc(100%-60px)] left-1/2 transform -translate-x-1/2 flex flex-col space-y-6">
 
                         <div className="relative">
-                            <img src={firstellipse} alt="" className='absolute -top-14 sm:-top-12 left-6 w-20 md:w-24' />
+                            <img src={firstellipse} alt="" className='absolute -top-17 sm:-top-21 left-6 w-20 md:w-24' />
                             <h1 className='text-2xl font-semibold mb-2 mt-4'>Defensive Driving Techniques</h1>
                             <p className='mb-4 text-sm sm:text-base'>
                                 Learn to drive safely and confidently with a focus
