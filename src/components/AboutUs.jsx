@@ -4,7 +4,7 @@ import orange from "../assets/orange-bg.png";
 const AboutUs = () => {
   return (
     <section className="relative">
-      <div className="relative bg-[#FA1D04] my-auto h-[45vh] sm:h-[55vh] md:h-[33vh] flex items-center justify-center overflow-hidden">
+      <div className="relative bg-[#FA1D04] mt-[60px] h-[35vh] sm:h-[55vh] md:h-[33vh] flex items-center justify-center overflow-hidden">
         {/* Orange Rays Background */}
         <img
           src={orange}

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const SectionProps = ({
   image,
@@ -14,7 +15,7 @@ const SectionProps = ({
   return (
     <section
       className={`flex flex-col md:flex-row items-center md:gap-15 gap-4 
-  px-6 sm:px-8 md:px-3 py-12 ${reverse ? "md:flex-row-reverse" : ""}`}
+  px-6 sm:px-8 md:px-3 py-4 md:py-12 ${reverse ? "md:flex-row-reverse" : ""}`}
     >
 
       {/* 🖼️ Image Section */}
@@ -85,19 +86,25 @@ const SectionProps = ({
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-[#fa1d04] py-2 md:px-8 px-4 text-white md:text-[17px] text-[11px] font-semibold rounded-3xl"
-            >
-              {primaryButtonText}
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-gray-100 text-black px-6 py-2 md:text-[17px] text-[13px] font-semibold rounded-3xl"
-            >
-              {secondaryButtonText}
-            </motion.button>
+            <Link to="/Contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="bg-[#fa1d04] py-2 md:px-8 px-4 text-white md:text-[17px] text-[11px] font-semibold rounded-3xl"
+              >
+                {primaryButtonText}
+              </motion.button>
+            </Link>
+
+            <Link to="/FAQs">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="bg-gray-100 text-black px-6 py-2 md:text-[17px] text-[13px] font-semibold rounded-3xl"
+              >
+                {secondaryButtonText}
+              </motion.button>
+            </Link>
           </motion.div>
+
         )}
       </motion.div>
     </section>

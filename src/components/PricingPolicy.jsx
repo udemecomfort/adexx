@@ -5,6 +5,7 @@ import { RiTrafficLightLine } from "react-icons/ri";
 import { FcCancel } from "react-icons/fc";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import { motion } from "framer-motion"; // 👈 import Framer Motion
+import { Link } from "react-router-dom"; // 👈 import Framer Motion
 
 const PricingPolicy = () => {
   return (
@@ -178,7 +179,8 @@ const PricingPolicy = () => {
         <p className="text-lg font-medium mb-3">
           Book Your Designated Driver Today!
         </p>
-        <motion.button
+        <Link to="/contact">
+           <motion.button
           className="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -186,6 +188,8 @@ const PricingPolicy = () => {
         >
           Request a Booking
         </motion.button>
+        </Link>
+       
         <p className="text-gray-500 text-sm mt-3 italic">
           Serving: Metro Vancouver and the Okanagan Region
         </p>

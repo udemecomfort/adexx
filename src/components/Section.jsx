@@ -20,7 +20,7 @@ const Section = () => {
   ];
 
   return (
-    <div>
+    <div className="py-0 md:py-12">
       {/* Designated Driver Section */}
       <SectionProps
         image={men}

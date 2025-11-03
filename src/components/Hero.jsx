@@ -12,7 +12,7 @@ const Hero = () => {
       <motion.img
         src={fill}
         alt="Background decorative"
-        className="absolute inset-0 w-full h-[70vh] md:h-[100vh] object-cover z-0"
+        className="absolute inset-0 w-full h-[40vh] md:h-[100vh] object-cover z-0"
         style={{}}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -32,7 +32,7 @@ const Hero = () => {
           transition={{ duration: 1, ease: 'easeOut' }}
         >
           <h1
-            className="text-[10px] md:text-[50px] md:pt-0 pt-11 font-bold text-black leading-relaxed 
+            className="text-[8px] md:text-[50px] md:pt-0 pt-11 font-bold text-black leading-relaxed 
                        w-full max-w-[320px] sm:max-w-[500px] md:max-w-[650px]"
           >
             Your Partner in Driving Solutions.
@@ -41,7 +41,7 @@ const Hero = () => {
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link to="/contact">
               <button
-                className="bg-[#fa1d04] text-[7px] md:text-[18px] text-white 
+                className="bg-[#fa1d04] text-[5px] md:text-[18px] text-white 
                            px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold 
                            hover:bg-white hover:text-[#fa1d04] md:text-left transition"
               >
@@ -54,7 +54,7 @@ const Hero = () => {
         {/* ✅ Image Section (moved down on small screens) */}
         <motion.div
           className="parallelogram relative flex justify-center items-center 
-                     flex-1 min-w-[170px] max-w-[420px] sm:max-w-[420px] md:max-w-[850px]
+                     flex-1 min-w-[180px] max-w-[420px] sm:max-w-[420px] md:max-w-[850px]
                      h-[45vh] sm:h-[55vh] md:h-[90vh] overflow-visible"
           initial={{ y: -40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -63,11 +63,11 @@ const Hero = () => {
           <img
             src={manHero}
             alt="Man standing by driving solutions"
-            className="w-full h-full object-contain md:object-cover scale-110 sm:scale-100 mt-[60px] sm:mt-0"
+            className="w-full h-full object-contain md:object-cover scale-110 sm:scale-100 mt-[10px] sm:mt-0"
           />
           <div
             className="absolute top-0 right-0 w-[15px] sm:w-[50px] md:w-[90px] h-full 
-                       bg-gradient-to-l from-black/30 to-transparent"
+                       bg-gradient-to-l from-white/30 to-transparent"
             style={{ transform: 'skewX(-30deg)' }}
           ></div>
         </motion.div>

@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../assets/PricingDS.png";
 import { FaCar, FaClock, FaRoad, FaStar, FaCheck } from "react-icons/fa";
+import {Link} from "react-router-dom"
 
 const packages = [
   {
@@ -107,9 +108,12 @@ const PackageCard = ({ pkg }) => (
 
     {/* Button */}
     <div className="text-center mt-4 sm:mt-6">
-      <button className="bg-[#FA1D04] text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full shadow-md hover:bg-[#d81703] hover:shadow-lg transition-all duration-300 inline-block">
+      <Link to="/contact">
+      <button className="bg-[#FA1D04] text-white  cursor-pointer font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full shadow-md hover:bg-[#d81703] hover:shadow-lg transition-all duration-300 inline-block">
         Get Started
       </button>
+      </Link>
+      
     </div>
   </div>
 );
