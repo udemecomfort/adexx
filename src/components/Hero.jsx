@@ -38,22 +38,19 @@ const Hero = () => {
             Your Partner in Driving Solutions.
           </h1>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="w-full flex justify-start sm:justify-center"
-          >
-            <Link to="/Contact" className="w-full sm:w-auto">
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link to="/Contact">
               <button
                 className="bg-[#fa1d04] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 
-                 rounded-lg hover:bg-white hover:text-[#fa1d04] 
-                 text-[10px] sm:text-[16px] md:text-[18px] 
-                 w-full sm:w-auto transition"
+               rounded-lg hover:bg-white hover:text-[#fa1d04] 
+               text-[10px] sm:text-[16px] md:text-[18px] 
+               text-left sm:text-center w-full sm:w-auto transition"
               >
                 Request a Booking
               </button>
             </Link>
-          </motion.div>
 
+          </motion.div>
         </motion.div>
 
         {/* ✅ Image Section (moved down on small screens) */}

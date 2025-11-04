@@ -111,15 +111,12 @@ const Footer = () => {
         {/* Contact Us Button */}
         <div className="flex flex-col sm:flex-row md:justify-start gap-3 mb-6">
           <Link
-            to="/contact"
+            to="/Contact"
             className="flex items-center cursor-pointer hover:text-[#fa1d04] transition-colors"
           >
-            <p className="text-sm sm:text-base font-medium bg-[#fa1d04] px-4 py-2 rounded-full text-white">
-              Contact Us
+            <p className="text-[10px] flex items-center sm:text-base font-medium bg-[#fa1d04] px-4 py-2 rounded-full text-white">
+              Contact Us <span><GoArrowUpRight size={18} /></span>
             </p>
-            <div className="bg-[#fa1d04] p-2 rounded-full flex items-center justify-center text-white ml-2">
-              <GoArrowUpRight size={18} />
-            </div>
           </Link>
         </div>
 
