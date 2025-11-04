@@ -30,7 +30,7 @@ const SectionProps = ({
 
         {overlayText && (
           <motion.p
-            className="absolute bg-[#fa1d04] md:py-5 py-1 px-10 text-white text-[16px] font-semibold rounded-tl-[55px] rounded-br-[55px] shadow-lg"
+            className="absolute bg-[#fa1d04] md:py-5 py-[2px] px-3 md:px-10 text-white text-[16px] font-semibold rounded-tl-[55px] rounded-br-[55px] shadow-lg"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}

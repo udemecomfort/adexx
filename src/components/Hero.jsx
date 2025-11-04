@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-   <section className="relative overflow-hidden mt-11 md:mt-0">
+    <section className="relative overflow-hidden mt-11 md:mt-0">
 
       {/* ✅ Background fill (fixed & behind content) */}
       <motion.img
@@ -38,17 +38,22 @@ const Hero = () => {
             Your Partner in Driving Solutions.
           </h1>
 
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Link to="/contact">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="w-full flex justify-start sm:justify-center"
+          >
+            <Link to="/Contact" className="w-full sm:w-auto">
               <button
-                className="bg-[#fa1d04] text-[8px] md:text-[18px] text-white 
-                           px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold 
-                           hover:bg-white hover:text-[#fa1d04] md:text-left transition"
+                className="bg-[#fa1d04] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 
+                 rounded-lg hover:bg-white hover:text-[#fa1d04] 
+                 text-[10px] sm:text-[16px] md:text-[18px] 
+                 w-full sm:w-auto transition"
               >
                 Request a Booking
               </button>
             </Link>
           </motion.div>
+
         </motion.div>
 
         {/* ✅ Image Section (moved down on small screens) */}

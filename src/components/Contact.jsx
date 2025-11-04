@@ -24,8 +24,8 @@ const Contact = () => {
   } else {
     // Default options for Contact page or other pages
     serviceOptions = [
-      { value: "driving", label: "Designated Driver/Personal Driver" },
-      { value: "pickup", label: "Driver for Hire" },
+       { value: "pickup", label: "Driving School" },
+      { value: "driving", label: "Designated Driver" },
     ];
   }
 
