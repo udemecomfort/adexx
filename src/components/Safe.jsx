@@ -43,7 +43,7 @@ const Safe = () => {
           <motion.img
             src={white}
             alt="Adex Logo White"
-            className="w-[200px] sm:w-[280px] md:w-[380px]"
+            className="w-[120px] sm:w-[280px] md:w-[380px]"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
