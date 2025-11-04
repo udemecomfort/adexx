@@ -9,8 +9,8 @@ const SectionProps = ({
   reverse = false,
   showButtons = true,
   primaryButtonText = "Request a Booking",
-  secondaryButtonText = "View More",
-  customTextClass = "", // e.g., "text-right items-end md:text-right md:items-end"
+  secondaryButtons = [], // Array of buttons [{ text: "View More", link: "/FAQs" }]
+  customTextClass = "",
 }) => {
   return (
     <section
@@ -86,6 +86,7 @@ const SectionProps = ({
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: true }}
           >
+            {/* Primary Button */}
             <Link to="/Contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -95,16 +96,18 @@ const SectionProps = ({
               </motion.button>
             </Link>
 
-            <Link to="/FAQs">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="bg-gray-100 text-black px-6 py-2 md:text-[17px] text-[13px] font-semibold rounded-3xl"
-              >
-                {secondaryButtonText}
-              </motion.button>
-            </Link>
+            {/* Secondary Buttons */}
+            {secondaryButtons.map((btn, index) => (
+              <Link key={index} to={btn.link}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-gray-100 text-black px-6 py-2 md:text-[17px] text-[13px] font-semibold rounded-3xl"
+                >
+                  {btn.text}
+                </motion.button>
+              </Link>
+            ))}
           </motion.div>
-
         )}
       </motion.div>
     </section>

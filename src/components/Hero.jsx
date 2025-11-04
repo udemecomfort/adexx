@@ -22,7 +22,7 @@ const Hero = () => {
       {/* ✅ Content container (on top of background) */}
       <div
         className="relative z-10 flex items-center justify-between 
-                   px-4 sm:px-8 md:px-20 gap-6 sm:gap-8  md:text-left md:mt-[60px] h-[50vh] md:h-[90vh]"
+                   pl-3 sm:px-8 md:px-20 gap-0 sm:gap-8  md:text-left md:mt-[60px] h-[50vh] md:h-[90vh]"
       >
         {/* Text Section */}
         <motion.div
@@ -32,7 +32,7 @@ const Hero = () => {
           transition={{ duration: 1, ease: 'easeOut' }}
         >
           <h1
-            className="text-[8px] md:text-[50px] md:pt-0 pt-11 font-bold text-black leading-relaxed 
+            className="text-[13px] md:text-[50px] md:pt-0 pt-2 font-bold text-black leading-relaxed 
                        w-full max-w-[320px] sm:max-w-[500px] md:max-w-[650px]"
           >
             Your Partner in Driving Solutions.
@@ -41,7 +41,7 @@ const Hero = () => {
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link to="/contact">
               <button
-                className="bg-[#fa1d04] text-[5px] md:text-[18px] text-white 
+                className="bg-[#fa1d04] text-[8px] md:text-[18px] text-white 
                            px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold 
                            hover:bg-white hover:text-[#fa1d04] md:text-left transition"
               >
@@ -63,7 +63,7 @@ const Hero = () => {
           <img
             src={manHero}
             alt="Man standing by driving solutions"
-            className="w-full h-full object-contain md:object-cover scale-110 sm:scale-100 mt-[10px] sm:mt-0"
+            className="w-full h-full object-contain md:object-cover scale-127 sm:scale-100 mt-[4px] sm:mt-0"
           />
           <div
             className="absolute top-0 right-0 w-[15px] sm:w-[50px] md:w-[90px] h-full 

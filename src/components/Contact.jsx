@@ -7,6 +7,29 @@ const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("");
 
+  // ✅ Step 1: Define dynamic options based on the page
+  let serviceOptions = [];
+  if (location.pathname === "/Designated-Driver") {
+    serviceOptions = [
+      { value: "driving", label: "Designated Driver/Personal Driver" },
+      { value: "pickup", label: "Driver for Hire" },
+    ];
+  } else if (location.pathname === "/Driving-School") {
+    serviceOptions = [
+      { value: "smart", label: "Start Smart Package- $810 (15 hrs/ 10 Sesseions)" },
+      { value: "brush", label: "Brush-Up Package- $630 (10.5 hrs/ 7 Sesseions)" },
+      { value: "test", label: "Test Ready Package - $270 (4.5 hrs/ 3 Sesseions)" },
+      { value: "basic", label: "Basic Session- $810 (1.5 hrs/ 1 Sesseions)" },
+    ];
+  } else {
+    // Default options for Contact page or other pages
+    serviceOptions = [
+      { value: "driving", label: "Designated Driver/Personal Driver" },
+      { value: "pickup", label: "Driver for Hire" },
+    ];
+  }
+
+  // ✅ Step 2: Send email function
   const sendEmail = (e) => {
     e.preventDefault();
     setStatus("Sending...");
@@ -14,27 +37,27 @@ const Contact = () => {
     // Send message to Adeniyi
     emailjs
       .sendForm(
-        "service_0pulqwa",       // 🔹 Replace with your EmailJS service ID
-        "template_hx70b1q",      // 🔹 Replace with your main template ID (to Adeniyi)
+        "service_0pulqwa",       // Replace with your EmailJS service ID
+        "template_hx70b1q",      // Replace with your main template ID
         form.current,
-        "wwzhi74eikxhrBvJE"        // 🔹 Replace with your EmailJS public key
+        "wwzhi74eikxhrBvJE"     // Replace with your EmailJS public key
       )
       .then(
         (result) => {
           console.log(result.text);
-          setStatus(" Message sent successfully!");
+          setStatus("Message sent successfully!");
           e.target.reset();
 
-          // Send auto-reply to the user
+          // Auto-reply to user
           emailjs
             .send(
-              "service_0pulqwa",       // 🔹 Same service ID
-              "template_h8zurqe", // 🔹 Replace with your auto-reply template ID
+              "service_0pulqwa",
+              "template_h8zurqe", // Auto-reply template ID
               {
                 user_email: form.current.user_email.value,
                 first_name: form.current.first_name.value,
               },
-              "wwzhi74eikxhrBvJE"        // 🔹 Same public key
+              "wwzhi74eikxhrBvJE"
             )
             .then(
               (res) => console.log("Auto-reply sent!", res.text),
@@ -43,7 +66,7 @@ const Contact = () => {
         },
         (error) => {
           console.error(error.text);
-          setStatus(" Failed to send message. Try again.");
+          setStatus("Failed to send message. Try again.");
         }
       );
   };
@@ -127,9 +150,11 @@ const Contact = () => {
             className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
           >
             <option value="">Select</option>
-            <option value="driving">Driving Service</option>
-            <option value="pickup">Pickup</option>
-            <option value="delivery">Delivery</option>
+            {serviceOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 

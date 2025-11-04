@@ -91,18 +91,18 @@ const Footer = () => {
             <div className="flex md:justify-end gap-2 text-base sm:text-lg text-gray-400">
               <SiWhatsapp className="text-[#fa1d04]" />
               <a
-                href="https://wa.me/1604671705"
+                href="https://wa.me/16046717055"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition"
               >
-                +1 (604) 671-705
+                +1 (604) 671-7055
               </a>
             </div>
             <div className="flex md:justify-end  gap-2 text-base sm:text-lg text-gray-400">
               <LuPhoneCall className="text-[#fa1d04]" />
               <a href="tel:+1604671705" className="hover:text-white transition">
-                +1 (604) 671-705
+                +1 (604) 671-7055
               </a>
             </div>
           </div>
