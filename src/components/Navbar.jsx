@@ -74,14 +74,12 @@ const Navbar = () => {
 
       {/* Mobile Navbar */}
       <div
-        className={`md:hidden border border-gray-300 shadow-lg ${
-          isOpen ? "bg-[#fa1d04]" : "bg-white"
-        } flex flex-col`}
+        className={`md:hidden border border-gray-300 shadow-lg ${isOpen ? "bg-[#fa1d04]" : "bg-white"
+          } flex flex-col`}
       >
         <div
-          className={`flex justify-between items-center px-10 pt-6 pb-6 fixed top-0 left-0 z-20 w-full ${
-            isOpen ? "bg-[#fa1d04]" : "bg-white"
-          }`}
+          className={`flex justify-between items-center px-10 pt-6 pb-6 fixed top-0 left-0 z-20 w-full ${isOpen ? "bg-[#fa1d04]" : "bg-white"
+            }`}
         >
           <img src={isOpen ? logomob : Logo} alt="Logo" className="w-[100px]" />
           {!isOpen ? (
@@ -150,12 +148,14 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
+            <Link to="/Contact" >
+              <div className="px-10 pb-6">
+                <button className="bg-white text-[#fa1d04] py-3 px-9 rounded-2xl font-semibold">
+                  Request a Booking
+                </button>
+              </div>
+            </Link>
 
-            <div className="px-10 pb-6">
-              <button className="bg-white text-[#fa1d04] py-3 px-9 rounded-2xl font-semibold">
-                Request a Booking
-              </button>
-            </div>
           </>
         )}
       </div>
