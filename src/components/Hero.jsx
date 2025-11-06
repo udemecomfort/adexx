@@ -32,7 +32,7 @@ const Hero = () => {
           transition={{ duration: 1, ease: 'easeOut' }}
         >
           <h1
-            className="text-[13px] md:text-[50px] md:pt-0 pt-2 font-bold text-black leading-relaxed 
+            className="text-[13px] md:text-[69px] md:pt-0 pt-2 font-bold text-black leading-relaxed 
                        w-full max-w-[320px] sm:max-w-[500px] md:max-w-[650px]"
           >
             Your Partner in Driving Solutions.
