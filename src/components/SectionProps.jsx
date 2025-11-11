@@ -11,13 +11,13 @@ const SectionProps = ({
   primaryButtonText = "Request a Booking",
   secondaryButtons = [], // Array of buttons [{ text: "View More", link: "/FAQs" }]
   customTextClass = "",
+  imageLink = "", // NEW: for clickable image
 }) => {
   return (
     <section
       className={`flex flex-col md:flex-row items-center md:gap-15 gap-4 
-  px-6 sm:px-8 md:px-3 py-4 md:py-12 ${reverse ? "md:flex-row-reverse" : ""}`}
+      px-6 sm:px-8 md:px-3 py-4 md:py-12 ${reverse ? "md:flex-row-reverse" : ""}`}
     >
-
       {/* 🖼️ Image Section */}
       <motion.div
         className="relative flex w-full md:w-1/2"
@@ -26,7 +26,17 @@ const SectionProps = ({
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <img src={image} alt="Section visual" className="w-full h-auto" />
+        {imageLink ? (
+          <Link to={imageLink}>
+            <img
+              src={image}
+              alt={overlayText}
+              className="w-full h-auto cursor-pointer"
+            />
+          </Link>
+        ) : (
+          <img src={image} alt={overlayText} className="w-full h-auto" />
+        )}
 
         {overlayText && (
           <motion.p
@@ -79,8 +89,9 @@ const SectionProps = ({
         {/* 🎯 Buttons */}
         {showButtons && (
           <motion.div
-            className={`flex md:flex-wrap gap-4 md:mt-6 mt-2 md:${customTextClass.includes("text-right") ? "justify-end" : "justify-start"
-              }`}
+            className={`flex md:flex-wrap gap-4 md:mt-6 mt-2 md:${
+              customTextClass.includes("text-right") ? "justify-end" : "justify-start"
+            }`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}

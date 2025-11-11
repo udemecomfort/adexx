@@ -28,10 +28,8 @@ const Section = () => {
         textContent={text1}
         reverse={false}
         primaryButtonText="Request a Booking"
-        secondaryButtons={[
-          { text: "View More", link: "/Designated-Driver" },
-      
-        ]}
+        secondaryButtons={[{ text: "View More", link: "/Designated-Driver" }]}
+        imageLink="/Designated-Driver" // Only this image routes here
       />
 
       {/* Driving School Section */}
@@ -41,11 +39,9 @@ const Section = () => {
         textContent={text2}
         reverse={true}
         primaryButtonText="Apply Now"
-        secondaryButtons={[
-          { text: "View More", link: "/Driving-School" },
-        
-        ]}
+        secondaryButtons={[{ text: "View More", link: "/Driving-School" }]}
         customTextClass="text-right"
+        imageLink="/Driving-School" // Only this image routes here
       />
     </div>
   );

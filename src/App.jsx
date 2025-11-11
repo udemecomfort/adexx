@@ -7,10 +7,13 @@ import ContactUS from './Pages/ContactUS'
 import FAQs from './Pages/FAQs'
 import { Route, Routes } from 'react-router'
 import { Fa0 } from 'react-icons/fa6'
+import ScrollToTop from './components/ScrolltoTop'
 const App = () => {
     return (
         <div>
+            <ScrollToTop/>
             <Routes>
+            
                 <Route path='/' element={<Home />} />
                 <Route path='/Designated-Driver' element={<DesignatedDriver />} />
                 <Route path='/Driving-School' element={<DrivingSchool />} />

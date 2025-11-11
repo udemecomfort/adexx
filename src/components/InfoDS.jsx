@@ -9,7 +9,7 @@ const InfoDS = () => {
         <div className="flex flex-row flex-wrap justify-center md:justify-around items-start px-4 sm:px-6 md:px-20 py-6 gap-12 w-full md:text-left">
 
             {/* Right Card */}
-            <div className="w-full md:w-auto flex justify-center mb-[600px] md:mb-[700px] lg:mb-0">
+            <div className="w-full md:w-auto flex justify-center mb-[700px] md:mb-[700px] lg:mb-0">
 
 
                 <div className="relative w-full max-w-[550px] ">
