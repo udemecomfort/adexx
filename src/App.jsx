@@ -7,7 +7,7 @@ import ContactUS from './Pages/ContactUS'
 import FAQs from './Pages/FAQs'
 import { Route, Routes } from 'react-router'
 import { Fa0 } from 'react-icons/fa6'
-import ScrollToTop from './components/ScrolltoTop'
+import ScrollToTop from './components/ScrollToTop'
 const App = () => {
     return (
         <div>
