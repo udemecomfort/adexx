@@ -125,7 +125,7 @@ const Navbar = () => {
                   to={link.to}
                   className={({ isActive }) =>
                     isActive
-                      ? "bg-[#fa1d04] block px-4 py-2 rounded text-sm md:text-[20px]"
+                      ? "bg-[#c71500] block px-4 py-2 rounded text-sm md:text-[20px]"
                       : "block px-4 py-2 text-sm md:text-[20px]"
                   }
                 >
