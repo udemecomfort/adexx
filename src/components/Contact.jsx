@@ -7,6 +7,9 @@ const MAIN_TEMPLATE_ID = "template_hx70b1q";
 const AUTOREPLY_TEMPLATE_ID = "template_h8zurqe";
 const PUBLIC_KEY = "wwzhi74eikxhrBvJE";
 
+// Set to false before going live so customers don't see technical errors
+const DEBUG = true;
+
 const inputClass =
   "w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]";
 
@@ -14,15 +17,13 @@ const Contact = () => {
   const location = useLocation();
   const form = useRef();
   const [status, setStatus] = useState("");
+  const [isError, setIsError] = useState(false);
   const [sending, setSending] = useState(false);
 
   // Dynamic service options based on the page
   let serviceOptions = [];
   if (location.pathname === "/Designated-Driver") {
-    serviceOptions = [
-      "Designated Driver/Personal Driver",
-      "Driver for Hire",
-    ];
+    serviceOptions = ["Designated Driver/Personal Driver", "Driver for Hire"];
   } else if (location.pathname === "/Driving-School") {
     serviceOptions = [
       "Start Smart Package - $810 (15 hrs / 10 Sessions)",
@@ -40,6 +41,7 @@ const Contact = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
     setSending(true);
+    setIsError(false);
     setStatus("Sending...");
 
     // Save values BEFORE resetting the form
@@ -47,28 +49,41 @@ const Contact = () => {
     const firstName = form.current.first_name.value;
 
     try {
-      // 1. Email to you (the business)
-      await emailjs.sendForm(SERVICE_ID, MAIN_TEMPLATE_ID, form.current, {
-        publicKey: PUBLIC_KEY,
-      });
+      // 1. Email to the business
+      const res = await emailjs.sendForm(
+        SERVICE_ID,
+        MAIN_TEMPLATE_ID,
+        form.current,
+        { publicKey: PUBLIC_KEY }
+      );
+      console.log("Main email sent:", res.status, res.text);
 
       form.current.reset();
       setStatus("Message sent successfully!");
 
       // 2. Auto-reply to the customer
       try {
-        await emailjs.send(
+        const reply = await emailjs.send(
           SERVICE_ID,
           AUTOREPLY_TEMPLATE_ID,
           { user_email: userEmail, first_name: firstName },
           { publicKey: PUBLIC_KEY }
         );
+        console.log("Auto-reply sent:", reply.status, reply.text);
       } catch (err) {
-        console.error("Auto-reply failed:", err);
+        console.error("Auto-reply failed:", err?.status, err?.text || err);
       }
     } catch (err) {
       console.error("Send failed:", err);
-      setStatus("Failed to send message. Try again.");
+      setIsError(true);
+
+      if (DEBUG) {
+        const code = err?.status ?? "no status";
+        const reason = err?.text || err?.message || "Unknown error";
+        setStatus(`Failed (${code}): ${reason}`);
+      } else {
+        setStatus("Failed to send message. Please try again.");
+      }
     } finally {
       setSending(false);
     }
@@ -210,7 +225,13 @@ const Contact = () => {
 
       {/* Status message */}
       {status && (
-        <p className="text-center mt-6 text-gray-700 font-medium">{status}</p>
+        <p
+          className={`text-center mt-6 font-medium ${
+            isError ? "text-red-600" : "text-gray-700"
+          }`}
+        >
+          {status}
+        </p>
       )}
     </div>
   );
