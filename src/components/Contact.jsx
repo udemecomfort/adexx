@@ -1,74 +1,77 @@
 import React, { useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
+
+const SERVICE_ID = "service_0pulqwa";
+const MAIN_TEMPLATE_ID = "template_hx70b1q";
+const AUTOREPLY_TEMPLATE_ID = "template_h8zurqe";
+const PUBLIC_KEY = "wwzhi74eikxhrBvJE";
+
+const inputClass =
+  "w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]";
 
 const Contact = () => {
   const location = useLocation();
   const form = useRef();
   const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
 
-  // ✅ Step 1: Define dynamic options based on the page
+  // Dynamic service options based on the page
   let serviceOptions = [];
   if (location.pathname === "/Designated-Driver") {
     serviceOptions = [
-      { value: "driving", label: "Designated Driver/Personal Driver" },
-      { value: "pickup", label: "Driver for Hire" },
+      "Designated Driver/Personal Driver",
+      "Driver for Hire",
     ];
   } else if (location.pathname === "/Driving-School") {
     serviceOptions = [
-      { value: "smart", label: "Start Smart Package- $810 (15 hrs/ 10 Sesseions)" },
-      { value: "brush", label: "Brush-Up Package- $630 (10.5 hrs/ 7 Sesseions)" },
-      { value: "test", label: "Test Ready Package - $270 (4.5 hrs/ 3 Sesseions)" },
-      { value: "basic", label: "Basic Session- $810 (1.5 hrs/ 1 Sesseions)" },
+      "Start Smart Package - $810 (15 hrs / 10 Sessions)",
+      "Brush-Up Package - $630 (10.5 hrs / 7 Sessions)",
+      "Test Ready Package - $270 (4.5 hrs / 3 Sessions)",
+      "Basic Session - $810 (1.5 hrs / 1 Session)", // double-check this price
     ];
   } else {
-    // Default options for Contact page or other pages
-    serviceOptions = [
-       { value: "pickup", label: "Driving School" },
-      { value: "driving", label: "Designated Driver" },
-    ];
+    serviceOptions = ["Driving School", "Designated Driver"];
   }
 
-  // ✅ Step 2: Send email function
-  const sendEmail = (e) => {
+  // Pickup/drop-off only make sense for driver services
+  const needsLocations = location.pathname !== "/Driving-School";
+
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setSending(true);
     setStatus("Sending...");
 
-    // Send message to Adeniyi
-    emailjs
-      .sendForm(
-        "service_0pulqwa",       // Replace with your EmailJS service ID
-        "template_hx70b1q",      // Replace with your main template ID
-        form.current,
-        "wwzhi74eikxhrBvJE"     // Replace with your EmailJS public key
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setStatus("Message sent successfully!");
-          e.target.reset();
+    // Save values BEFORE resetting the form
+    const userEmail = form.current.user_email.value;
+    const firstName = form.current.first_name.value;
 
-          // Auto-reply to user
-          emailjs
-            .send(
-              "service_0pulqwa",
-              "template_h8zurqe", // Auto-reply template ID
-              {
-                user_email: form.current.user_email.value,
-                first_name: form.current.first_name.value,
-              },
-              "wwzhi74eikxhrBvJE"
-            )
-            .then(
-              (res) => console.log("Auto-reply sent!", res.text),
-              (err) => console.error("Auto-reply failed", err.text)
-            );
-        },
-        (error) => {
-          console.error(error.text);
-          setStatus("Failed to send message. Try again.");
-        }
-      );
+    try {
+      // 1. Email to you (the business)
+      await emailjs.sendForm(SERVICE_ID, MAIN_TEMPLATE_ID, form.current, {
+        publicKey: PUBLIC_KEY,
+      });
+
+      form.current.reset();
+      setStatus("Message sent successfully!");
+
+      // 2. Auto-reply to the customer
+      try {
+        await emailjs.send(
+          SERVICE_ID,
+          AUTOREPLY_TEMPLATE_ID,
+          { user_email: userEmail, first_name: firstName },
+          { publicKey: PUBLIC_KEY }
+        );
+      } catch (err) {
+        console.error("Auto-reply failed:", err);
+      }
+    } catch (err) {
+      console.error("Send failed:", err);
+      setStatus("Failed to send message. Try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -101,7 +104,7 @@ const Contact = () => {
             name="first_name"
             placeholder="First Name"
             required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            className={inputClass}
           />
         </div>
 
@@ -113,7 +116,7 @@ const Contact = () => {
             name="last_name"
             placeholder="Last Name"
             required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            className={inputClass}
           />
         </div>
 
@@ -125,7 +128,7 @@ const Contact = () => {
             name="user_email"
             placeholder="Email Address"
             required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            className={inputClass}
           />
         </div>
 
@@ -133,26 +136,22 @@ const Contact = () => {
         <div>
           <label className="block text-gray-600 text-sm mb-1">Phone Number</label>
           <input
-            type="text"
+            type="tel"
             name="phone"
             placeholder="Phone Number"
             required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            className={inputClass}
           />
         </div>
 
         {/* Type of Service */}
         <div>
           <label className="block text-gray-600 text-sm mb-1">Type of Service</label>
-          <select
-            name="service_type"
-            required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
-          >
+          <select name="service_type" required className={inputClass}>
             <option value="">Select</option>
-            {serviceOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
+            {serviceOptions.map((label) => (
+              <option key={label} value={label}>
+                {label}
               </option>
             ))}
           </select>
@@ -167,8 +166,8 @@ const Contact = () => {
             type="text"
             name="pickup"
             placeholder="Address"
-            required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            required={needsLocations}
+            className={inputClass}
           />
         </div>
 
@@ -179,19 +178,21 @@ const Contact = () => {
             type="text"
             name="dropoff"
             placeholder="Address"
-            required
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            required={needsLocations}
+            className={inputClass}
           />
         </div>
 
         {/* Message */}
         <div className="md:col-span-2">
-          <label className="block text-gray-600 text-sm mb-1">Special instructions or requests</label>
+          <label className="block text-gray-600 text-sm mb-1">
+            Special instructions or requests
+          </label>
           <textarea
             rows="3"
             name="user_message"
             placeholder="Your message"
-            className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FA1D04]"
+            className={inputClass}
           ></textarea>
         </div>
 
@@ -199,9 +200,10 @@ const Contact = () => {
         <div className="md:col-span-2 flex justify-start">
           <button
             type="submit"
-            className="cursor-pointer bg-[#FA1D04] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-md hover:bg-red-600 transition"
+            disabled={sending}
+            className="cursor-pointer bg-[#FA1D04] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-md hover:bg-red-600 transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Request a Callback
+            {sending ? "Sending..." : "Request a Callback"}
           </button>
         </div>
       </form>

@@ -5,9 +5,9 @@ import orange from "../assets/orange-bg.png";
 const ContactPage = () => {
   return (
     <section className="relative mt-[90px]">
-      {/* Background section */}
+      
       <div className="relative bg-[#FA1D04] h-[25vh] sm:h-[40vh] md:h-[25vh] flex items-center justify-center overflow-hidden">
-        {/* Background image */}
+      
         <img
           src={orange}
           alt="Orange Rays"
