@@ -7,7 +7,6 @@ const MAIN_TEMPLATE_ID = "template_hx70b1q";
 const AUTOREPLY_TEMPLATE_ID = "template_h8zurqe";
 const PUBLIC_KEY = "wwzhi74eikxhrBvJE";
 
-// Set to false before going live so customers don't see technical errors
 const DEBUG = true;
 
 const inputClass =
@@ -20,7 +19,7 @@ const Contact = () => {
   const [isError, setIsError] = useState(false);
   const [sending, setSending] = useState(false);
 
-  // Dynamic service options based on the page
+  
   let serviceOptions = [];
   if (location.pathname === "/Designated-Driver") {
     serviceOptions = ["Designated Driver/Personal Driver", "Driver for Hire"];

@@ -1,151 +1,205 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { LuPhoneCall } from "react-icons/lu";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { NavLink, Link } from "react-router-dom";
 
 import Logo from "../assets/ADEX LOGO.png";
 import logomob from "../assets/ADEX LOGO WHITE.png";
 
+const PHONE_DISPLAY = "604-671-7055";
+const PHONE_HREF = "tel:+16046717055";
+
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/Designated-Driver", label: "Designated Driver" },
+  { to: "/Driving-School", label: "Driving School" },
+  { to: "/FAQs", label: "FAQs" },
+];
+
+// Same padding in both states so links don't shift when they become active
+const desktopBase =
+  "px-3 py-2 rounded-xl font-semibold text-base xl:text-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fa1d04]";
+const desktopActive = `${desktopBase} text-white bg-[#c71500]`;
+const desktopNormal = `${desktopBase} text-gray-800 hover:text-[#c71500]`;
+
+const mobileBase =
+  "block rounded-lg px-4 py-3 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white";
+const mobileActive = `${mobileBase} bg-black/25 text-white`;
+const mobileNormal = `${mobileBase} text-white/90 hover:bg-white/10`;
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const activeLink =
-    "text-white bg-[#c71500] py-[8px] px-[12px] font-semibold text-[16px] md:text-[20px] rounded-xl transition";
-  const normalLink =
-    "hover:text-[#c71500] transition font-semibold text-[16px] md:text-[20px]";
+  // While the mobile menu is open: Esc closes it, page scroll is locked,
+  // and it closes automatically if the window grows to desktop size.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKey = (e) => e.key === "Escape" && setIsOpen(false);
+    const onResize = () => window.innerWidth >= 1024 && setIsOpen(false);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [isOpen]);
 
   return (
-    <nav>
-      {/* ===== Desktop Navbar ===== */}
-      <div className="hidden md:flex fixed top-0 left-0 w-full bg-white shadow-md z-50 pl-[60px] pr-[20px] justify-between items-center h-[90px]">
-        <div className="flex items-center gap-30">
-          <img src={Logo} alt="Logo" className="w-[100px]" />
-          <ul className="flex gap-16 text-gray-800 font-semibold">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? activeLink : normalLink)}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Designated-Driver"
-                className={({ isActive }) => (isActive ? activeLink : normalLink)}
-              >
-                Designated Driver
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Driving-School"
-                className={({ isActive }) => (isActive ? activeLink : normalLink)}
-              >
-                Driving School
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/FAQs"
-                className={({ isActive }) => (isActive ? activeLink : normalLink)}
-              >
-                FAQs
-              </NavLink>
-            </li>
+    <header>
+      {/* ===== Desktop Navbar (lg and up) ===== */}
+      <nav
+        aria-label="Main"
+        className="hidden lg:flex fixed top-0 left-0 z-50 h-[90px] w-full items-center justify-between bg-white pl-10 pr-5 shadow-md xl:pl-[60px]"
+      >
+        <div className="flex items-center gap-8 xl:gap-14">
+          <Link to="/" aria-label="ADEX home">
+            <img src={Logo} alt="ADEX logo" className="w-[100px]" />
+          </Link>
+
+          <ul className="flex items-center gap-2 xl:gap-6">
+            {links.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    isActive ? desktopActive : desktopNormal
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div
-          className="hidden md:block w-[340px] h-[90px] shadow-md bg-black px-4 flex flex-col items-center justify-center text-center"
+        {/* Skewed call block: the box is skewed, the content is skewed back so text stays straight */}
+        <a
+          href={PHONE_HREF}
+          aria-label={`Call us at ${PHONE_DISPLAY}`}
+          className="flex h-[90px] w-[270px] items-center justify-center bg-black shadow-md transition-colors hover:bg-neutral-900 xl:w-[340px]"
           style={{ transform: "skewX(-25deg)" }}
         >
-          <p className="text-white text-[19px] mb-1 flex justify-center">
-            Call to Questions
-          </p>
-          <div className="flex items-center gap-2 skew-x-[19deg]">
-            <LuPhoneCall className="text-[#fa1d04] h-10 text-[29px]" />
-            <p className="text-white font-bold text-[29px]">604-671-7055</p>
+          <div
+            className="flex flex-col items-center"
+            style={{ transform: "skewX(25deg)" }}
+          >
+            <p className="mb-1 text-base text-white xl:text-[19px]">
+              Questions? Call us
+            </p>
+            <div className="flex items-center gap-2">
+              <LuPhoneCall className="text-2xl text-[#fa1d04] xl:text-[29px]" />
+              <span className="text-2xl font-bold text-white xl:text-[29px]">
+                {PHONE_DISPLAY}
+              </span>
+            </div>
+          </div>
+        </a>
+      </nav>
+
+      {/* ===== Mobile / Tablet Navbar (below lg) ===== */}
+      <div className="lg:hidden">
+        {/* Top bar */}
+        <div className="fixed top-0 left-0 z-50 flex h-[90px] w-full items-center justify-between bg-white px-6 shadow-md">
+          <Link to="/" aria-label="ADEX home">
+            <img src={Logo} alt="ADEX logo" className="w-[100px]" />
+          </Link>
+
+          <div className="flex items-center gap-3">
+            <a
+              href={PHONE_HREF}
+              aria-label={`Call us at ${PHONE_DISPLAY}`}
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fa1d04] text-white transition-colors hover:bg-[#c71500]"
+            >
+              <LuPhoneCall className="text-xl" />
+            </a>
+            <button
+              type="button"
+              onClick={() => setIsOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              className="flex h-11 w-11 items-center justify-center rounded-md text-[#fa1d04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fa1d04]"
+            >
+              <HiMenuAlt3 className="text-4xl" />
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* ===== Mobile Navbar ===== */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-50">
-        {/* Top bar (Logo + Hamburger) */}
+        {/* Backdrop */}
         <div
-          className={`flex justify-between items-center px-8 py-5 w-full transition-all duration-500 ${
-            isOpen
-              ? "bg-gradient-to-r from-[#fa1d04] via-[#d81200] to-[#870a00]"
-              : "bg-white"
+          aria-hidden="true"
+          onClick={closeMenu}
+          className={`fixed inset-0 z-[55] bg-black/50 transition-opacity duration-300 ${
+            isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
+        />
+
+        {/* Slide-in drawer */}
+        <nav
+          id="mobile-menu"
+          aria-label="Mobile"
+          aria-hidden={!isOpen}
+          className={`fixed inset-y-0 left-0 z-[60] flex w-[80%] max-w-[340px] flex-col bg-gradient-to-b from-[#fa1d04] via-[#d81200] to-[#870a00] text-white shadow-2xl transition-[transform,visibility] duration-300 ease-in-out ${
+            isOpen ? "visible translate-x-0" : "invisible -translate-x-full"
           }`}
         >
-          <img
-            src={isOpen ? logomob : Logo}
-            alt="Logo"
-            className="w-[100px] transition-transform duration-500"
-          />
-          {!isOpen && (
-            <HiMenuAlt3
-              className="text-[#fa1d04] text-4xl cursor-pointer"
-              onClick={toggleMenu}
-            />
-          )}
-        </div>
-
-        {/* ===== Slide-in Mobile Menu ===== */}
-        <div
-          className={`fixed top-0 left-0 h-screen w-[80%] bg-gradient-to-b from-[#fa1d04] via-[#d81200] to-[#870a00] text-white transform transition-transform duration-500 ease-in-out ${
-            isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
-          } flex flex-col justify-start shadow-2xl z-50`}
-        >
-          {/* Logo + Close Button */}
-          <div className="flex justify-between items-center px-8 pt-6">
-            <img src={logomob} alt="Logo" className="w-[100px]" />
-            <IoCloseCircleOutline
-              className="text-white text-4xl cursor-pointer hover:rotate-90 transition-transform duration-500"
+          <div className="flex items-center justify-between px-6 pt-6">
+            <Link to="/" onClick={closeMenu} aria-label="ADEX home">
+              <img src={logomob} alt="ADEX logo" className="w-[100px]" />
+            </Link>
+            <button
+              type="button"
               onClick={closeMenu}
-            />
+              aria-label="Close menu"
+              className="rounded-full text-white transition-transform duration-300 hover:rotate-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              <IoCloseCircleOutline className="text-4xl" />
+            </button>
           </div>
 
-          {/* Links */}
-          <ul className="flex flex-col space-y-4 font-semibold px-10 mt-4">
-            {[
-              { to: "/", label: "Home" },
-              { to: "/Designated-Driver", label: "Designated Driver" },
-              { to: "/Driving-School", label: "Driving School" },
-              { to: "/FAQs", label: "FAQs" },
-            ].map((link) => (
-              <li key={link.to} onClick={closeMenu}>
+          <ul className="mt-6 space-y-1 px-4">
+            {links.map(({ to, label }) => (
+              <li key={to}>
                 <NavLink
-                  to={link.to}
+                  to={to}
+                  onClick={closeMenu}
                   className={({ isActive }) =>
-                    isActive
-                      ? "bg-[#c71500] block px-4 py-2 rounded text-sm md:text-[20px]"
-                      : "block px-4 py-2 text-sm md:text-[20px]"
+                    isActive ? mobileActive : mobileNormal
                   }
                 >
-                  {link.label}
+                  {label}
                 </NavLink>
               </li>
             ))}
           </ul>
 
-          {/* Button */}
-          <div className="px-10 mt-4 mb-10">
-            <Link to="/Contact" onClick={closeMenu}>
-              <button className="bg-white text-[#fa1d04] py-2 px-6 text-[14px] md:text-[18px] rounded-2xl font-semibold w-full hover:bg-gray-100 transition">
-                Request a Booking
-              </button>
+          <div className="mt-auto space-y-3 px-6 pb-8">
+            <Link
+              to="/Contact"
+              onClick={closeMenu}
+              className="block w-full rounded-2xl bg-white py-3 text-center text-base font-semibold text-[#fa1d04] transition-colors hover:bg-gray-100"
+            >
+              Request a Booking
             </Link>
+            <a
+              href={PHONE_HREF}
+              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/60 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              <LuPhoneCall className="text-xl" />
+              {PHONE_DISPLAY}
+            </a>
           </div>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 
