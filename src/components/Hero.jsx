@@ -1,78 +1,162 @@
 import React from "react";
 import { motion } from "framer-motion";
-import fill from "../assets/Hero-fill.png";
-import manHero from "../assets/Man-hero.png";
 import { Link } from "react-router-dom";
+import { LuArrowRight, LuCar, LuGraduationCap } from "react-icons/lu";
+
+// TO CHANGE THE PHOTO: save a bright, close-up photo in src/assets
+// (e.g. instructor + student in the car, or a driver handing back keys)
+// and change this path, e.g. "../assets/home-hero.webp"
+import HERO_IMAGE from "../assets/Man-hero.png";
+
+/* ============================================================
+   EASY SETTINGS: change colours / text / links here only
+   ============================================================ */
+const ACCENT = "#fa1d04";        // brand colour (buttons, highlights)
+const ACCENT_HOVER = "#c71500";  // darker shade shown on hover
+const BG = "#0b0b0b";            // hero background
+const SURFACE = "#161616";       // card background
+
+const HEADLINE_TOP = "Your Partner in";
+const HEADLINE_ACCENT = "Driving Solutions.";
+const DESCRIPTION =
+  "Professional designated drivers and certified driving instruction, across the Okanagan Valley, Metro Vancouver, Kelowna and Lake Country.";
+
+const CTA_TEXT = "Request a Booking";
+const CTA_LINK = "/Contact";
+const SECOND_TEXT = "View Our Services";
+const SECOND_LINK = "#services";  // add id="services" to your services section
+
+// The two service cards under the hero
+const SERVICES = [
+  {
+    icon: LuCar,
+    title: "Designated Driving",
+    area: "Okanagan Valley & Metro Vancouver",
+    text: "A professional, insured driver gets you and your own car home safely.",
+    to: "/Designated-Driver",
+  },
+  {
+    icon: LuGraduationCap,
+    title: "Driving School",
+    area: "Kelowna & Lake Country",
+    text: "Patient instructors and ICBC road test preparation, from first lesson to test day.",
+    to: "/Driving-School",
+  },
+];
+/* ============================================================ */
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.8, ease: "easeOut" },
+});
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden mt-11 md:mt-0">
-
-      {/* ✅ Background fill (fixed & behind content) */}
-      <motion.img
-        src={fill}
-        alt="Background decorative"
-        className="absolute inset-0 w-full h-[40vh] md:h-[100vh] object-cover z-0"
-        style={{}}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
+    <section
+      className="relative overflow-hidden pt-[90px] md:pt-[100px]"
+      style={{
+        "--accent": ACCENT,
+        "--accent-hover": ACCENT_HOVER,
+        "--surface": SURFACE,
+        backgroundColor: BG,
+      }}
+    >
+      {/* Soft glow behind the headline */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] rounded-full opacity-25 blur-3xl"
+        style={{ backgroundColor: ACCENT }}
       />
 
-      {/* ✅ Content container (on top of background) */}
-      <div
-        className="relative z-10 flex items-center justify-between 
-                   pl-3 sm:px-8 md:px-20 gap-0 sm:gap-8  md:text-left md:mt-[60px] h-[50vh] md:h-[90vh]"
-      >
-        {/* Text Section */}
-        <motion.div
-          className="flex-1 flex flex-col items-center md:items-start space-y-0 sm:space-y-6"
-          initial={{ x: -80, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-        >
-          <h1
-            className="text-[13px] md:text-[69px] md:pt-0 pt-2 font-bold text-black leading-relaxed 
-                       w-full max-w-[320px] sm:max-w-[500px] md:max-w-[650px]"
-          >
-            Your Partner in Driving Solutions.
+      {/* ===== Main hero ===== */}
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 py-10 sm:px-8 md:py-16 lg:grid-cols-2 lg:gap-14 lg:px-10">
+        {/* Headline */}
+        <motion.div {...fadeUp(0.1)}>
+          <h1 className="text-[40px] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            {HEADLINE_TOP}{" "}
+            <span className="text-[var(--accent)]">{HEADLINE_ACCENT}</span>
           </h1>
+        </motion.div>
 
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Link to="/Contact">
-              <button
-                className="bg-[#fa1d04] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 
-               rounded-lg hover:bg-white hover:text-[#fa1d04] 
-               text-[10px] sm:text-[16px] md:text-[18px] 
-               text-left sm:text-center w-full sm:w-auto transition"
-              >
-                Request a Booking
-              </button>
+        {/* Photo + description + buttons */}
+        <motion.div {...fadeUp(0.3)} className="lg:pl-4">
+          <img
+            src={HERO_IMAGE}
+            alt="Professional driver and driving instructor with a client"
+            fetchPriority="high"
+            className="h-[240px] w-full rounded-2xl object-cover shadow-2xl sm:h-[340px] lg:h-[360px]"
+          />
+
+          <p className="mt-5 max-w-lg text-sm leading-relaxed text-gray-300 sm:text-base">
+            {DESCRIPTION}
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link
+              to={CTA_LINK}
+              className="group inline-flex min-h-[52px] items-stretch overflow-hidden rounded-md bg-[var(--accent)] font-bold text-white transition-colors hover:bg-[var(--accent-hover)]"
+            >
+              <span className="flex flex-1 items-center justify-center px-6">
+                {CTA_TEXT}
+              </span>
+              <span className="flex w-14 items-center justify-center border-l border-white/30">
+                <LuArrowRight
+                  className="text-xl transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </span>
             </Link>
 
-          </motion.div>
+            <a
+              href={SECOND_LINK}
+              className="group inline-flex min-h-[52px] items-stretch overflow-hidden rounded-md border border-white/40 font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-black"
+            >
+              <span className="flex flex-1 items-center justify-center px-6">
+                {SECOND_TEXT}
+              </span>
+              <span className="flex w-14 items-center justify-center border-l border-white/30">
+                <LuArrowRight
+                  className="text-xl transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </span>
+            </a>
+          </div>
         </motion.div>
+      </div>
 
-        {/* ✅ Image Section (moved down on small screens) */}
-        <motion.div
-          className="parallelogram relative flex justify-center items-center 
-                     flex-1 min-w-[180px] max-w-[420px] sm:max-w-[420px] md:max-w-[850px]
-                     h-[45vh] sm:h-[55vh] md:h-[90vh] overflow-visible"
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-        >
-          <img
-            src={manHero}
-            alt="Man standing by driving solutions"
-            className="w-full h-full object-contain md:object-cover scale-127 sm:scale-100 mt-[4px] sm:mt-0"
-          />
-          <div
-            className="absolute top-0 right-0 w-[15px] sm:w-[50px] md:w-[90px] h-full 
-                       bg-gradient-to-l from-white/30 to-transparent"
-            style={{ transform: 'skewX(-30deg)' }}
-          ></div>
-        </motion.div>
+      {/* ===== Two equal service cards ===== */}
+      <div id="services" className="relative z-10 mx-auto max-w-7xl px-5 pb-12 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {SERVICES.map(({ icon: Icon, title, area, text, to }, i) => (
+            <motion.div key={title} {...fadeUp(0.5 + i * 0.15)}>
+              <Link
+                to={to}
+                className="group flex h-full items-start gap-5 rounded-2xl border border-white/10 bg-[var(--surface)] p-6 transition-colors hover:border-[var(--accent)]"
+              >
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/15 text-[var(--accent)]">
+                  <Icon className="text-3xl" aria-hidden="true" />
+                </span>
+                <span className="flex-1">
+                  <span className="block text-xl font-bold text-white">
+                    {title}
+                  </span>
+                  <span className="mt-0.5 block text-sm font-semibold text-[var(--accent)]">
+                    {area}
+                  </span>
+                  <span className="mt-2 block text-sm leading-relaxed text-gray-400">
+                    {text}
+                  </span>
+                </span>
+                <LuArrowRight
+                  className="mt-1 shrink-0 text-2xl text-white transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
